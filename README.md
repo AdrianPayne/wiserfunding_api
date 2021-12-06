@@ -1,5 +1,18 @@
 # WiserFunding API
-## Basic goals
+## Deployment
+```
+source venv/bin/activate
+pip install -r requirements.txt
+```
+### Local
+Run
+```
+cd api/v1
+flask run
+```
+
+## Goals
+### Basic
 
 Implement basic API:
 - One resource: 
@@ -31,7 +44,7 @@ OUTPUT:
 “zscore”: xxx}, {“year”: 2017, “zscore”: xxx}, {“year”: 2016, “zscore”: xxx}]}
 ```
 
-### Z-Score formula
+#### Z-Score formula
 ```
 Z = 1.2X1 + 1.4X2 + 3.3X3 + 0.6X4 + 1.0X5
 X1 = working_capital / total_assets
@@ -41,7 +54,7 @@ X4 = equity / total_liabilities
 X5 = sales / total_assets
 ```
 
-## Plus goals
+### Plus
 Additional endpoints to return previously generated reports:
 
 - [ ] Database models in postgres or sqlite, mysql etc.

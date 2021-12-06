@@ -11,6 +11,13 @@ cd api/v1
 flask run
 ```
 
+## Test
+From root project:
+```
+export PYTHONPATH='.'
+pytest
+```
+
 ## Goals
 ### Basic
 

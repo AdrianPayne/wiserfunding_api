@@ -3,3 +3,7 @@
 
 # Venv
 venv
+
+# Test
+**/__pycache__
+**/*.pyc

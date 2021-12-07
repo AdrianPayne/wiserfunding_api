@@ -7,8 +7,8 @@ pip install -r requirements.txt
 ### Local
 Run
 ```
-cd api/v1
-flask run
+export PYTHONPATH='.'
+python3 api/v1/app.py
 ```
 
 ## Test

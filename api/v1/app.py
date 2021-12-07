@@ -13,7 +13,12 @@ def health_check_view():
 @app.route('/company/<country_iso_code>/<id_company>', methods=['PUT'])
 def z_score_view(country_iso_code, id_company):
     request_data = request.get_json()
-    if not validators.validate_z_score_view(country_iso_code, id_company, request_data):
+    if not validators.validate_z_score_view(country_iso_code, id_company, request_data['financials']):
         return Response('Incorrect input', 400)
 
-    return z_score.z_scores(request_data['financials'])
+    return z_score.process_financials_data(request_data['financials'])
+
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', debug=True)
+

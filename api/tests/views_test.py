@@ -29,10 +29,8 @@ class TestViews(unittest.TestCase):
             'data_incorrect': {
                 'country_iso_code': 12, 'company_id': 'hola',
                 'payload_request': {'financials': [
-                    {"year": 2020, "ebit": 123.45, "equity": 234.56, "retained_earnings": 345.67, "sales": 1234.56,
+                    {"year": 2020, "equity": 234.56, "retained_earnings": 345.67, "sales": 1234.56,
                      "total_assets": 345.67, "total_liabilities": 456.78, "working_capital": 23.45},
-                    {"year": 2019, "ebit": 122.63, "equity": 224.56, "retained_earnings": 325.33, "sales": 1214.99,
-                     "total_assets": 325.04, "total_liabilities": 426.78, "working_capital": 23.45}
                 ]}
             }
         }
@@ -45,17 +43,17 @@ class TestViews(unittest.TestCase):
 
     def test_z_score_view_ok(self):
         test_data = self.test_data['data_ok']
-        expected_response = {"scores": [
-            {"year": 2020, "zscore": 0}, {"year": 2019, "zscore": 0},
-            {"year": 2018, "zscore": 0}, {"year": 2017, "zscore": 0},
-            {"year": 2016, "zscore": 0}
+        expected_data_response = {"scores": [
+            {"year": 2020, "zscore": 6.54}, {"year": 2019, "zscore": 6.79},
+            {"year": 2018, "zscore": 6.67}, {"year": 2017, "zscore": 6.46},
+            {"year": 2016, "zscore": 6.6}
         ]}
 
         response = self.client.put(f'/company/{test_data["country_iso_code"]}/{test_data["company_id"]}',
                                    data=json.dumps(test_data["payload_request"]),
                                    content_type='application/json')
 
-        self.assertEqual(expected_response, response.data)
+        self.assertEqual(expected_data_response, json.loads(response.data))
 
     def test_z_score_view_incorrect_input(self):
         test_data_incorrect = self.test_data['data_incorrect']
@@ -70,8 +68,8 @@ class TestViews(unittest.TestCase):
              'payload_request': test_data_incorrect["payload_request"]},
             {'country_iso_code': test_data_incorrect["country_iso_code"], 'company_id': test_data_ok["company_id"],
              'payload_request': test_data_incorrect["payload_request"]},
-            {'country_iso_code': test_data_ok["country_iso_code"], 'company_id': test_data_ok["company_id"],
-             'payload_request': test_data_ok["payload_request"]}
+            {'country_iso_code': test_data_incorrect["country_iso_code"], 'company_id': test_data_incorrect["company_id"],
+             'payload_request': test_data_incorrect["payload_request"]}
         ]
 
         for case in data_cases:

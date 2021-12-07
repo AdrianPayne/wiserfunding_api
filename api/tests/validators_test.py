@@ -1,5 +1,5 @@
 import unittest
-from api.v1 import validators
+from v1 import validators
 
 
 class TestValidators(unittest.TestCase):

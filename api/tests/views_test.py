@@ -1,6 +1,6 @@
 import json
 import unittest
-from api.v1.app import app
+from v1.app import app
 
 
 # Integrity test suit

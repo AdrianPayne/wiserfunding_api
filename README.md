@@ -1,20 +1,22 @@
 # WiserFunding API
-## Deployment
+## Build and run
+### Dockers
+```
+docker-compose build && docker-compose up
+```
+### Pure Python
 ```
 source venv/bin/activate
 pip install -r requirements.txt
-```
-### Local
-Run
-```
-export PYTHONPATH='.'
+
+export PYTHONPATH='./api'
 python3 api/v1/app.py
 ```
 
 ## Test
 From root project:
 ```
-export PYTHONPATH='.'
+export PYTHONPATH='./api'
 pytest
 ```
 
@@ -66,7 +68,7 @@ Additional endpoints to return previously generated reports:
 
 - [ ] Database models in postgres or sqlite, mysql etc.
 - [ ] Build and deploy to free cloud tier on AWS, GCP, Azure etc.
-- [ ] docker compose up to run locally
+- [X] Docker compose up to run locally
 - [ ] API documentation and examples
 - [ ] Use of pre-commit, black, mypy, isort etc.
 - [ ] Test coverage of 100%

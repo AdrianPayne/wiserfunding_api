@@ -1,6 +1,6 @@
 from flask import Flask, request, Response
 
-from api.v1 import validators, z_score
+from v1 import validators, z_score
 
 app = Flask(__name__)
 

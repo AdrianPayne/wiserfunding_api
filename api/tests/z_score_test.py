@@ -1,6 +1,6 @@
 import unittest
 
-from api.v1 import z_score
+from v1 import z_score
 
 
 # Unit tests
